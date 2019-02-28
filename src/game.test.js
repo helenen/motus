@@ -3,7 +3,7 @@ const game = std('./game.mjs');
 
 describe('Word selector', function () {
   test('should return a word of a given length', () => {
-    let words = [('azerty', 'qsdfghj', 'tyuiopkjhd')];
+    let words = ['azerty', 'qsdfghj', 'tyuiopkjhd'];
     expect(game.selectWord(words, 7)).toEqual('qsdfghj');
   });
   test('should return a word of any given length', () => {
@@ -52,7 +52,7 @@ describe('Uncensor', function () {
   test('should uncensor random letters', () => {
     let censoredWord = '----------';
     let word = 'azertyuiop';
-    expect(game.uncensor(censoredWord, word, 2)).not.toEqual('az--------');
+    expect(game.uncensor(censoredWord, word, 3)).not.toEqual('aze-------');
   });
 });
 
@@ -64,6 +64,10 @@ describe('Character determiner', function () {
   test('should not pick characters that are already uncensored', () => {
     let word = 'aze-ty';
     expect(game.determineChar(word)).toEqual(3);
+  });
+  test('should always pick the first character if possible', () => {
+    let word = '------';
+    expect(game.determineChar(word)).toEqual(0);
   });
 });
 

@@ -1,9 +1,22 @@
 <html>
     <head>
-        <title>motus</title>
-        <script src='index.js'></script>
+        <title>Motus</title>
+        <script type="module" src='motus.js'></script>
+        <style type="text/css">
+            input[type=text]:disabled {
+                color:red;
+                
+            }
+            .correct[type=text]:disabled {
+                color:green;
+            }
+        </style>
     </head>
     <body>
-        hello world
+        <h1>Motus</h1>
+        <div class="main">
+            <div id="word"></div>
+            <div id="grid"></div>
+        </div>
     </body>
 </html>

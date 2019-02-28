@@ -9,7 +9,7 @@
       "max-len": ["error", { "code": 150 }],
       "no-global-assign": ["error", {"exceptions": ["Object"]}],
       "func-names": ["error", "never"],
-      "no-param-reassign": ["error", { "props": true , "ignorePropertyModificationsFor": ["dom","state"]}],
+      "no-param-reassign": ["error", { "props": true }],
       "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
     },
     "parserOptions": {

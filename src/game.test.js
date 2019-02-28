@@ -3,15 +3,15 @@ const game = std('./game.mjs');
 
 describe('Word selector', function () {
   test('should return a word of a given length', () => {
-    let words = ["azerty", "qsdfghj", "tyuiopkjhd"];
-    expect(game.selectWord(words, 7)).toEqual("qsdfghj");
+    let words = ['azerty', 'qsdfghj', 'tyuiopkjhd'];
+    expect(game.selectWord(words, 7)).toEqual('qsdfghj');
   });
   test('should return a word of any given length', () => {
-    let words = ["azerty", "qsdfghj", "tyuiopkjhd"];
-    expect(game.selectWord(words, 10)).toEqual("tyuiopkjhd");
+    let words = ['azerty', 'qsdfghj', 'tyuiopkjhd'];
+    expect(game.selectWord(words, 10)).toEqual('tyuiopkjhd');
   });
   test('should return a random word with the given length', () => {
-    let words = ["azerty", "qsdfghj", "tyuiopkjhd", "azertyuiop"];
+    let words = ['azerty', 'qsdfghj', 'tyuiopkjhd', 'azertyuiop'];
     let selectWordTest = () => game.selectWord(words, 10);
     let results = [
       selectWordTest(),
@@ -24,35 +24,35 @@ describe('Word selector', function () {
       selectWordTest(),
       selectWordTest()
     ];
-    expect(results.find(word => word === "azertyuiop")).not.toEqual(undefined);
+    expect(results.find(word => word === 'azertyuiop')).not.toEqual(undefined);
   });
 });
 
 describe('Word censor', function () {
   test('should return a censored version of a given word', () => {
-    let word = "azerty";
-    expect(game.censorWord(word, 0)).toEqual("------");
+    let word = 'azerty';
+    expect(game.censorWord(word, 0)).toEqual('------');
   });
   test('should take the number of characters into account', () => {
-    let word = "azertyuiop";
-    expect(game.censorWord(word, 0)).toEqual("----------");
+    let word = 'azertyuiop';
+    expect(game.censorWord(word, 0)).toEqual('----------');
   });
   test('should leave as many uncensored letters as needed', () => {
-    let word = "aze";
-    expect(game.censorWord(word, 3)).toEqual("aze");
+    let word = 'aze';
+    expect(game.censorWord(word, 3)).toEqual('aze');
   });
 });
 
 describe('Uncensor', function () {
   test('should uncensor as many letters as needed', () => {
-    let censoredWord = "---";
-    let word = "aze";
-    expect(game.uncensor(censoredWord, word, 3)).toEqual("aze");
+    let censoredWord = '---';
+    let word = 'aze';
+    expect(game.uncensor(censoredWord, word, 3)).toEqual('aze');
   });
   test('should uncensor random letters', () => {
-    let censoredWord = "----------";
-    let word = "azertyuiop";
-    expect(game.uncensor(censoredWord, word, 2)).not.toEqual("az--------");
+    let censoredWord = '----------';
+    let word = 'azertyuiop';
+    expect(game.uncensor(censoredWord, word, 3)).not.toEqual('aze-------');
   });
 });
 
@@ -64,6 +64,10 @@ describe('Character determiner', function () {
   test('should not pick characters that are already uncensored', () => {
     let word = 'aze-ty';
     expect(game.determineChar(word)).toEqual(3);
+  });
+  test('should always pick the first character if possible', () => {
+    let word = '------';
+    expect(game.determineChar(word)).toEqual(0);
   });
 });
 

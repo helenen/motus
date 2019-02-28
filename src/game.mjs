@@ -30,6 +30,5 @@ export function censorWord(word, uncensoredLetters) {
 }
 
 export function compare(word, result) {
-  let commonChars = word.split('').filter((char, index) => char === result[index]);
-  return commonChars.length;
+  return word.split('').map((char, index) => char === result[index]);
 }

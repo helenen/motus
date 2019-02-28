@@ -50,9 +50,9 @@ describe('Uncensor', function () {
     expect(game.uncensor(censoredWord, word, 3)).toEqual('aze');
   });
   test('should uncensor random letters', () => {
-    let censoredWord = '----------';
-    let word = 'azertyuiop';
-    expect(game.uncensor(censoredWord, word, 3)).not.toEqual('aze-------');
+    let censoredWord = '--------------------';
+    let word = 'azertyuiopqsdfghjklm';
+    expect(game.uncensor(censoredWord, word, 3)).not.toEqual('aze-----------------');
   });
 });
 
@@ -72,19 +72,19 @@ describe('Character determiner', function () {
 });
 
 describe('Comparer', function () {
-  test('should return 0 if no character is right', () => {
+  test('should return an array of false if no character is right', () => {
     let word = 'azerty';
     let result = 'qsdfgh';
-    expect(game.compare(word, result)).toEqual(0);
+    expect(game.compare(word, result)).toEqual([false, false, false, false, false, false]);
   });
-  test('should return 1 if a character is right', () => {
+  test('should return an array with the right characters', () => {
     let word = 'azerty';
     let result = 'qzdfgh';
-    expect(game.compare(word, result)).toEqual(1);
+    expect(game.compare(word, result)).toEqual([false, true, false, false, false, false]);
   });
-  test('should return the number of common characters', () => {
+  test('should return as many true as needed', () => {
     let word = 'azertytreza';
     let result = 'zzertytyeze';
-    expect(game.compare(word, result)).toEqual(8);
+    expect(game.compare(word, result)).toEqual([false, true, true, true, true, true, true, false, true, true, false]);
   });
 });

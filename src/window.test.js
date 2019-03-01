@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const std = require('@std/esm')(module);
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
@@ -238,8 +239,8 @@ describe('Word getter', function () {
         + '<input type="button" value="Jouer" id="submit" disabled>'
       + '</div>'
     + '</div>');
-    let length = 6;
     let turn = 2;
-    expect(window.getSubmittedWord(dom, length, turn)).toEqual('azerty');
+    let length = 6;
+    expect(window.getSubmittedWord(dom, turn, length)).toEqual('azerty');
   });
 });

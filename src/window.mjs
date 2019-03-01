@@ -27,3 +27,12 @@ export function writeGrid(dom, slots, history, current) {
   if (turn < 6) document = writeGrid(document, slots, history, turn);
   return document;
 }
+
+export function getSubmittedWord(dom, history, length, currentWord, currentCount) {
+  let word = currentWord || '';
+  let count = currentCount || 0;
+  word += dom.getElementsByClassName('slot' + count)[history.length].value;
+  count += 1;
+  if (count < length) word = getSubmittedWord(dom, history, length, word, count);
+  return word;
+}

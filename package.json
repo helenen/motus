@@ -15,13 +15,6 @@
         "jest": "^24.1.0"
     },
     "dependencies": {},
-    "env": {
-        "production": {
-            "plugins": [
-                "transform-es2015-modules-commonjs"
-            ]
-        }
-    },
     "jest": {
         "transformIgnorePatterns": [
             "/node_modules/(?!test-component).+\\.js$"

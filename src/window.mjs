@@ -28,11 +28,12 @@ export function writeGrid(dom, slots, history, current) {
   return document;
 }
 
-export function getSubmittedWord(dom, history, length, currentWord, currentCount) {
+export function getSubmittedWord(dom, turn, length, currentWord, currentCount) {
   let word = currentWord || '';
   let count = currentCount || 0;
-  word += dom.getElementsByClassName('slot' + count)[history.length].value;
+  console.log(dom.getElementsByClassName);
+  word += dom.getElementsByClassName('slot' + count)[turn].value;
   count += 1;
-  if (count < length) word = getSubmittedWord(dom, history, length, word, count);
+  if (count < length) word = getSubmittedWord(dom, turn, length, word, count);
   return word;
 }

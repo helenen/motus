@@ -238,8 +238,8 @@ describe('Word getter', function () {
         + '<input type="button" value="Jouer" id="submit" disabled>'
       + '</div>'
     + '</div>');
-    let slots = 6;
-    let history = 
-    expect(window.writeSlots(dom, slots, history, turn)).toEqual(expected);
+    let length = 6;
+    let turn = 2;
+    expect(window.getSubmittedWord(dom, length, turn)).toEqual('azerty');
   });
 });

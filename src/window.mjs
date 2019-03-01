@@ -31,7 +31,7 @@ export function writeGrid(dom, slots, history, current) {
 export function getSubmittedWord(dom, turn, length, currentWord, currentCount) {
   let word = currentWord || '';
   let count = currentCount || 0;
-  word += dom.getElementsByClassName('slot' + count)[turn].value;
+  word += dom.querySelectorAll('input.slot' + count)[turn].value;
   count += 1;
   if (count < length) word = getSubmittedWord(dom, turn, length, word, count);
   return word;

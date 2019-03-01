@@ -3,7 +3,7 @@
 import {
   selectWord, censorWord, compare, hasWon, isLastTurn
 } from './game.mjs';
-import { writeGrid, getSubmittedWord } from './window.mjs';
+import { writeGrid, getSubmittedWord, disableGrid } from './window.mjs';
 
 const words = ['azertyu', 'flandre', 'tututut'];
 let length = 7;
@@ -26,6 +26,7 @@ document.addEventListener('click', (e) => {
     writeGrid(document, length, history);
     if (hasWon(state.word, result)) {
       document.getElementById('outcome').innerHTML = 'You win';
+      disableGrid(document, history.length, length);
     } else if (isLastTurn(history.length)) {
       document.getElementById('outcome').innerHTML = 'You lose';
     }

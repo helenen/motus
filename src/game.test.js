@@ -88,3 +88,27 @@ describe('Comparer', function () {
     expect(game.compare(word, result)).toEqual([false, true, true, true, true, true, true, false, true, true, false]);
   });
 });
+
+describe('Referee', function () {
+  test('should return true if the player won', () => {
+    let word = 'azerty';
+    let result = 'azerty';
+    expect(game.hasWon(word, result)).toEqual(true);
+  });
+  test('should return false if the player did not win', () => {
+    let word = 'azorty';
+    let result = 'azerty';
+    expect(game.hasWon(word, result)).toEqual(false);
+  });
+});
+
+describe('Last turn checker', function () {
+  test('should return false if it is not the last turn', () => {
+    let turn = 3;
+    expect(game.isLastTurn(turn)).toEqual(false);
+  });
+  test('should return true if it is the last turn', () => {
+    let turn = 6;
+    expect(game.isLastTurn(turn)).toEqual(true);
+  });
+});

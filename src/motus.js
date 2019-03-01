@@ -1,6 +1,8 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable eol-last */
-import { selectWord, censorWord, compare } from './game.mjs';
+import {
+  selectWord, censorWord, compare, hasWon, isLastTurn
+} from './game.mjs';
 import { writeGrid, getSubmittedWord } from './window.mjs';
 
 const words = ['azertyu', 'flandre', 'tututut'];
@@ -22,5 +24,10 @@ document.addEventListener('click', (e) => {
     state.rightSlots = compare(state.word, result);
     history.push(state);
     writeGrid(document, length, history);
+    if (hasWon(state.word, result)) {
+      document.getElementById('outcome').innerHTML = 'You win';
+    } else if (isLastTurn(history.length)) {
+      document.getElementById('outcome').innerHTML = 'You lose';
+    }
   }
 });

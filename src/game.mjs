@@ -32,3 +32,11 @@ export function censorWord(word, uncensoredLetters) {
 export function compare(word, result) {
   return word.split('').map((char, index) => char === result[index]);
 }
+
+export function hasWon(word, result) {
+  return word === result;
+}
+
+export function isLastTurn(turn) {
+  return turn === 6;
+}

@@ -18,7 +18,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot4" value="">'
             + '<input type="text" maxlength="1" class="slot5" value="">'
             + '<input type="text" maxlength="1" class="slot6" value="">'
-            + '<input type="button" value="Jouer" id="submit">'
+            + '<input type="button" value="Jouer" id="submit" class="submit">'
           + '</div>'
           + '<div id="turn1">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -28,7 +28,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot6" value="" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn2">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -38,7 +38,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot6" value="" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn3">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -48,7 +48,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot6" value="" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn4">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -58,7 +58,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot6" value="" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn5">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -68,7 +68,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot6" value="" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
         + '</div>');
     expect(window.writeGrid(dom, slots, history)).toEqual(expected);
@@ -92,7 +92,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot3" value="v" disabled>'
             + '<input type="text" maxlength="1" class="slot4" value="v" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="v" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn1">'
           + '<input type="text" maxlength="1" class="slot0 correct" value="a" disabled>'
@@ -101,7 +101,7 @@ describe('Grid writer', function () {
           + '<input type="text" maxlength="1" class="slot3" value="v" disabled>'
           + '<input type="text" maxlength="1" class="slot4 correct" value="t" disabled>'
           + '<input type="text" maxlength="1" class="slot5 correct" value="y" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn2">'
             + '<input type="text" maxlength="1" class="slot0" value="">'
@@ -110,7 +110,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot3" value="">'
             + '<input type="text" maxlength="1" class="slot4" value="">'
             + '<input type="text" maxlength="1" class="slot5" value="">'
-            + '<input type="button" value="Jouer" id="submit">'
+            + '<input type="button" value="Jouer" id="submit" class="submit">'
           + '</div>'
           + '<div id="turn3">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -119,7 +119,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn4">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -128,7 +128,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn5">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -137,7 +137,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
             + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
-            + '<input type="button" value="Jouer" id="submit" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
         + '</div>');
     expect(window.writeGrid(dom, slots, history)).toEqual(expected);
@@ -158,7 +158,7 @@ describe('Slots writer', function () {
       + '<input type="text" maxlength="1" class="slot4" value="">'
       + '<input type="text" maxlength="1" class="slot5" value="">'
       + '<input type="text" maxlength="1" class="slot6" value="">'
-      + '<input type="button" value="Jouer" id="submit">'
+      + '<input type="button" value="Jouer" id="submit" class="submit">'
     + '</div>');
     expect(window.writeSlots(dom, slots, history, turn)).toEqual(expected);
   });
@@ -175,7 +175,7 @@ describe('Slots writer', function () {
       + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
       + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
       + '<input type="text" maxlength="1" class="slot6" value="" disabled>'
-      + '<input type="button" value="Jouer" id="submit" disabled>'
+      + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
     + '</div>');
     expect(window.writeSlots(dom, slots, history, turn)).toEqual(expected);
   });
@@ -191,7 +191,7 @@ describe('Word getter', function () {
         + '<input type="text" maxlength="1" class="slot3" value="v" disabled>'
         + '<input type="text" maxlength="1" class="slot4" value="v" disabled>'
         + '<input type="text" maxlength="1" class="slot5" value="v" disabled>'
-        + '<input type="button" value="Jouer" id="submit" disabled>'
+        + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
       + '</div>'
       + '<div id="turn1">'
       + '<input type="text" maxlength="1" class="slot0 correct" value="a" disabled>'
@@ -200,7 +200,7 @@ describe('Word getter', function () {
       + '<input type="text" maxlength="1" class="slot3" value="v" disabled>'
       + '<input type="text" maxlength="1" class="slot4 correct" value="t" disabled>'
       + '<input type="text" maxlength="1" class="slot5 correct" value="y" disabled>'
-        + '<input type="button" value="Jouer" id="submit" disabled>'
+        + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
       + '</div>'
       + '<div id="turn2">'
         + '<input type="text" maxlength="1" class="slot0" value="a">'
@@ -209,7 +209,7 @@ describe('Word getter', function () {
         + '<input type="text" maxlength="1" class="slot3" value="r">'
         + '<input type="text" maxlength="1" class="slot4" value="t">'
         + '<input type="text" maxlength="1" class="slot5" value="y">'
-        + '<input type="button" value="Jouer" id="submit">'
+        + '<input type="button" value="Jouer" id="submit" class="submit">'
       + '</div>'
       + '<div id="turn3">'
         + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -218,7 +218,7 @@ describe('Word getter', function () {
         + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
         + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
         + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
-        + '<input type="button" value="Jouer" id="submit" disabled>'
+        + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
       + '</div>'
       + '<div id="turn4">'
         + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -227,7 +227,7 @@ describe('Word getter', function () {
         + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
         + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
         + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
-        + '<input type="button" value="Jouer" id="submit" disabled>'
+        + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
       + '</div>'
       + '<div id="turn5">'
         + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
@@ -236,11 +236,55 @@ describe('Word getter', function () {
         + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
         + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
         + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
-        + '<input type="button" value="Jouer" id="submit" disabled>'
+        + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
       + '</div>'
     + '</div>');
     let turn = 2;
     let length = 6;
     expect(window.getSubmittedWord(dom, turn, length)).toEqual('azerty');
+  });
+});
+
+describe('Grid disabler', function () {
+  test('should prevent the player from playing again', () => {
+    let dom = JSDOM.fragment('<div id="turn0">'
+        + '<input type="text" maxlength="1" class="slot0" value="a" disabled>'
+        + '<input type="text" maxlength="1" class="slot1" value="z" disabled>'
+        + '<input type="text" maxlength="1" class="slot2" value="e" disabled>'
+        + '<input type="text" maxlength="1" class="slot3" value="r" disabled>'
+        + '<input type="text" maxlength="1" class="slot4" value="t" disabled>'
+        + '<input type="text" maxlength="1" class="slot5" value="y" disabled>'
+        + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
+      + '</div>'
+      + '<div id="turn1">'
+        + '<input type="text" maxlength="1" class="slot0" value="">'
+        + '<input type="text" maxlength="1" class="slot1" value="">'
+        + '<input type="text" maxlength="1" class="slot2" value="">'
+        + '<input type="text" maxlength="1" class="slot3" value="">'
+        + '<input type="text" maxlength="1" class="slot4" value="">'
+        + '<input type="text" maxlength="1" class="slot5" value="">'
+        + '<input type="button" value="Jouer" id="submit" class="submit">'
+      + '</div>');
+    let expected = JSDOM.fragment('<div id="turn0">'
+    + '<input type="text" maxlength="1" class="slot0" value="a" disabled>'
+    + '<input type="text" maxlength="1" class="slot1" value="z" disabled>'
+    + '<input type="text" maxlength="1" class="slot2" value="e" disabled>'
+    + '<input type="text" maxlength="1" class="slot3" value="r" disabled>'
+    + '<input type="text" maxlength="1" class="slot4" value="t" disabled>'
+    + '<input type="text" maxlength="1" class="slot5" value="y" disabled>'
+    + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
+  + '</div>'
+  + '<div id="turn1">'
+    + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
+    + '<input type="text" maxlength="1" class="slot1" value="" disabled>'
+    + '<input type="text" maxlength="1" class="slot2" value="" disabled>'
+    + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
+    + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
+    + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
+    + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
+  + '</div>');
+    let turn = 1;
+    let length = 6;
+    expect(window.disableGrid(dom, turn, length)).toEqual(expected);
   });
 });

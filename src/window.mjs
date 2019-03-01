@@ -13,7 +13,7 @@ export function writeSlots(dom, slots, history, turn, current) {
   + cssClass + '" value="' + value + '" ' + disabled + '>';
   slot += 1;
   if (slot < slots) document = writeSlots(document, slots, history, turn, slot);
-  else document.getElementById('turn' + turn).innerHTML += '<input type="button" value="Jouer" id="submit" ' + disabled + '>';
+  else document.getElementById('turn' + turn).innerHTML += '<input type="button" value="Jouer" id="submit" class="submit" ' + disabled + '>';
   return document;
 }
 
@@ -35,4 +35,14 @@ export function getSubmittedWord(dom, turn, length, currentWord, currentCount) {
   count += 1;
   if (count < length) word = getSubmittedWord(dom, turn, length, word, count);
   return word;
+}
+
+export function disableGrid(dom, turn, length, currentCount) {
+  let document = dom;
+  let count = currentCount || 0;
+  document.querySelectorAll('input.slot' + count)[turn].setAttribute('disabled', '');
+  count += 1;
+  if (count === length) document.querySelectorAll('input.submit')[turn].setAttribute('disabled', '');
+  else document = disableGrid(document, turn, length, count);
+  return document;
 }

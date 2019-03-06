@@ -78,11 +78,13 @@ describe('Grid writer', function () {
     let slots = 6;
     let history = [{
       word: 'avevvv',
-      rightSlots: [true, false, true, false, false, false]
+      rightSlots: [true, false, true, false, false, false],
+      rightChars: [true, false, true, false, false, false]
     },
     {
       word: 'avevty',
-      rightSlots: [true, false, true, false, true, true]
+      rightSlots: [true, false, true, false, true, true],
+      rightChars: [true, false, true, false, true, true]
     }];
     let expected = JSDOM.fragment('<div id="grid">'
           + '<div id="turn0">'
@@ -102,6 +104,72 @@ describe('Grid writer', function () {
           + '<input type="text" maxlength="1" class="slot4 correct" value="t" disabled>'
           + '<input type="text" maxlength="1" class="slot5 correct" value="y" disabled>'
             + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
+          + '</div>'
+          + '<div id="turn2">'
+            + '<input type="text" maxlength="1" class="slot0" value="">'
+            + '<input type="text" maxlength="1" class="slot1" value="">'
+            + '<input type="text" maxlength="1" class="slot2" value="">'
+            + '<input type="text" maxlength="1" class="slot3" value="">'
+            + '<input type="text" maxlength="1" class="slot4" value="">'
+            + '<input type="text" maxlength="1" class="slot5" value="">'
+            + '<input type="button" value="Jouer" id="submit" class="submit">'
+          + '</div>'
+          + '<div id="turn3">'
+            + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot1" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot2" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
+          + '</div>'
+          + '<div id="turn4">'
+            + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot1" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot2" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
+          + '</div>'
+          + '<div id="turn5">'
+            + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot1" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot2" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
+          + '</div>'
+        + '</div>');
+    expect(window.writeGrid(dom, slots, history)).toEqual(expected);
+  });
+  test('should indicate if a character is in the wrong place', () => {
+    let dom = JSDOM.fragment('<div id="grid"></div>');
+    let slots = 6;
+    let history = [{
+      word: 'azdfeg',
+      rightSlots: [true, true, false, false, false, false],
+      wrongPlace: [true, true, false, false, true, false]
+    }];
+    let expected = JSDOM.fragment('<div id="grid">'
+          + '<div id="turn0">'
+            + '<input type="text" maxlength="1" class="slot0 correct" value="a" disabled>'
+            + '<input type="text" maxlength="1" class="slot1 correct" value="z" disabled>'
+            + '<input type="text" maxlength="1" class="slot2" value="d" disabled>'
+            + '<input type="text" maxlength="1" class="slot3" value="f" disabled>'
+            + '<input type="text" maxlength="1" class="slot4 wrongPlace" value="e" disabled>'
+            + '<input type="text" maxlength="1" class="slot5" value="g" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
+          + '</div>'
+          + '<div id="turn1">'
+            + '<input type="text" maxlength="1" class="slot0" value="">'
+            + '<input type="text" maxlength="1" class="slot1" value="">'
+            + '<input type="text" maxlength="1" class="slot2" value="">'
+            + '<input type="text" maxlength="1" class="slot3" value="">'
+            + '<input type="text" maxlength="1" class="slot4" value="">'
+            + '<input type="text" maxlength="1" class="slot5" value="">'
+            + '<input type="button" value="Jouer" id="submit" class="submit">'
           + '</div>'
           + '<div id="turn2">'
             + '<input type="text" maxlength="1" class="slot0" value="">'

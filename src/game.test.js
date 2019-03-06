@@ -129,4 +129,9 @@ describe('Deep Comparer', function () {
     let result = 'azerty';
     expect(game.deepCompare(word, result)).toEqual([false, false, false, true, false, false]);
   });
+  test('should work in any situation', () => {
+    let word = 'ppppasdfhzio';
+    let result = 'azertyuioppp';
+    expect(game.deepCompare(word, result)).toEqual([true, true, true, false, true, false, false, false, false, true, true, true]);
+  });
 });

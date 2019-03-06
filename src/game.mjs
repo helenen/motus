@@ -34,7 +34,17 @@ export function compare(word, result) {
 }
 
 export function deepCompare(word, result) {
-  return word.split('').map((char) => result.indexOf(char) > -1);
+  let resultCopy = result;
+  let array = [];
+  word.split('').forEach((char) => {
+    if (resultCopy.indexOf(char) > -1) {
+      array.push(true);
+      resultCopy = resultCopy.substr(0, resultCopy.indexOf(char)) + resultCopy.substr(resultCopy.indexOf(char) + 1);
+    } else {
+      array.push(false);
+    }
+  });
+  return array;
 }
 
 export function hasWon(word, result) {

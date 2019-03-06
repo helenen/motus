@@ -3,9 +3,11 @@
         <title>Motus</title>
         <script type="module" src='motus.js'></script>
         <style type="text/css">
+            input[type=text] {
+                width:30px;
+            }
             input[type=text]:disabled {
                 color:red;
-                
             }
             .correct[type=text]:disabled {
                 color:green;
@@ -29,7 +31,7 @@
             <div id="grid"></div>
             <div id="score"></div>
             <div id="outcome"></div>
-            <button onclick="location.reload()">Recommencer</button>
+            <button onclick="location.reload()" id="reloadButton" hidden>Recommencer</button>
         </div>
     </body>
 </html>

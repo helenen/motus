@@ -8,6 +8,7 @@ export function writeSlots(dom, slots, history, turn, current) {
   if (history[turn]) {
     value = history[turn].word[slot] || '';
     cssClass = history[turn].rightSlots[slot] ? ' correct' : '';
+    if (cssClass === '') cssClass = history[turn].rightChars[slot] ? ' wrongPlace' : '';
   }
   document.getElementById('turn' + turn).innerHTML += '<input type="text" maxlength="1" class="slot' + slot
   + cssClass + '" value="' + value + '" ' + disabled + '>';

@@ -150,7 +150,7 @@ describe('Grid writer', function () {
     let history = [{
       word: 'azdfeg',
       rightSlots: [true, true, false, false, false, false],
-      wrongPlace: [true, true, false, false, true, false]
+      rightChars: [true, true, false, false, true, false]
     }];
     let expected = JSDOM.fragment('<div id="grid">'
           + '<div id="turn0">'
@@ -172,13 +172,13 @@ describe('Grid writer', function () {
             + '<input type="button" value="Jouer" id="submit" class="submit">'
           + '</div>'
           + '<div id="turn2">'
-            + '<input type="text" maxlength="1" class="slot0" value="">'
-            + '<input type="text" maxlength="1" class="slot1" value="">'
-            + '<input type="text" maxlength="1" class="slot2" value="">'
-            + '<input type="text" maxlength="1" class="slot3" value="">'
-            + '<input type="text" maxlength="1" class="slot4" value="">'
-            + '<input type="text" maxlength="1" class="slot5" value="">'
-            + '<input type="button" value="Jouer" id="submit" class="submit">'
+            + '<input type="text" maxlength="1" class="slot0" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot1" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot2" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot3" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot4" value="" disabled>'
+            + '<input type="text" maxlength="1" class="slot5" value="" disabled>'
+            + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn3">'
             + '<input type="text" maxlength="1" class="slot0" value="" disabled>'

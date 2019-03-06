@@ -112,3 +112,21 @@ describe('Last turn checker', function () {
     expect(game.isLastTurn(turn)).toEqual(true);
   });
 });
+
+describe('Deep Comparer', function () {
+  test('should return an array of false if no character is right', () => {
+    let word = 'azerty';
+    let result = 'qsdfgh';
+    expect(game.deepCompare(word, result)).toEqual([false, false, false, false, false, false]);
+  });
+  test('should return true if the character exists', () => {
+    let word = 'azerty';
+    let result = 'qsdegh';
+    expect(game.deepCompare(word, result)).toEqual([false, false, true, false, false, false]);
+  });
+  test('should not detect the same character twice', () => {
+    let word = 'qsdeef';
+    let result = 'azerty';
+    expect(game.deepCompare(word, result)).toEqual([false, false, false, true, false, false]);
+  });
+});

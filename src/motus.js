@@ -26,7 +26,7 @@ document.addEventListener('click', (e) => {
     writeGrid(document, length, history);
     if (hasWon(state.word, result)) {
       document.getElementById('outcome').innerHTML = 'You win';
-      disableGrid(document, history.length, length);
+      if (history.length > 6) disableGrid(document, history.length, length);
     } else if (isLastTurn(history.length)) {
       document.getElementById('outcome').innerHTML = 'You lose';
     }

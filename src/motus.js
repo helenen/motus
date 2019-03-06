@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable eol-last */
 import {
-  selectWord, censorWord, compare, hasWon, isLastTurn
+  selectWord, censorWord, compare, deepCompare, hasWon, isLastTurn
 } from './game.mjs';
 import { writeGrid, getSubmittedWord, disableGrid } from './window.mjs';
 
@@ -22,6 +22,7 @@ document.addEventListener('click', (e) => {
     let state = {};
     state.word = getSubmittedWord(document, history.length, length);
     state.rightSlots = compare(state.word, result);
+    state.rightChars = deepCompare(state.word, result);
     history.push(state);
     writeGrid(document, length, history);
     if (hasWon(state.word, result)) {

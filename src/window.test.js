@@ -79,12 +79,12 @@ describe('Grid writer', function () {
     let history = [{
       word: 'avevvv',
       rightSlots: [true, false, true, false, false, false],
-      rightChars: [true, false, true, false, false, false]
+      rightChars: [false, false, false, false, false, false]
     },
     {
       word: 'avevty',
       rightSlots: [true, false, true, false, true, true],
-      rightChars: [true, false, true, false, true, true]
+      rightChars: [false, false, false, false, false, false]
     }];
     let expected = JSDOM.fragment('<div id="grid">'
           + '<div id="turn0">'
@@ -150,7 +150,7 @@ describe('Grid writer', function () {
     let history = [{
       word: 'azdfeg',
       rightSlots: [true, true, false, false, false, false],
-      rightChars: [true, true, false, false, true, false]
+      rightChars: [false, false, false, false, true, false]
     }];
     let expected = JSDOM.fragment('<div id="grid">'
           + '<div id="turn0">'

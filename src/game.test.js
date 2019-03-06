@@ -129,9 +129,20 @@ describe('Deep Comparer', function () {
     let result = 'azerty';
     expect(game.deepCompare(word, result)).toEqual([false, false, false, true, false, false]);
   });
+  test('should not detect correct characters', () => {
+    let word = 'eaeaea';
+    let result = 'zzzazz';
+    expect(game.deepCompare(word, result)).toEqual([false, false, false, false, false, false]);
+  });
+  test('should detect characters even if one is correct', () => {
+    let word = 'ezeezee';
+    let result = 'aaaazza';
+    expect(game.deepCompare(word, result)).toEqual([false, true, false, false, false, false, false]);
+  });
   test('should work in any situation', () => {
-    let word = 'ppppasdfhzio';
-    let result = 'azertyuioppp';
-    expect(game.deepCompare(word, result)).toEqual([true, true, true, false, true, false, false, false, false, true, true, true]);
+    let word = 'ppppasdfhziopasd';
+    let result = 'azertyuioppppasd';
+    expect(game.deepCompare(word, result)).toEqual([true, true, true, false, true, false, false, false,
+      false, true, true, true, false, false, false, false]);
   });
 });

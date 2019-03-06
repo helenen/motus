@@ -34,12 +34,14 @@ export function compare(word, result) {
 }
 
 export function deepCompare(word, result) {
-  let resultCopy = result;
   let array = [];
-  word.split('').forEach((char) => {
-    if (resultCopy.indexOf(char) > -1) {
+  let comparisonArray = compare(word, result);
+  let filteredWord = word.split('').map((char, index) => comparisonArray[index] ? '-' : char);
+  let filteredResult = result.split('').map((char, index) => comparisonArray[index] ? '-' : char).join('');
+  filteredWord.forEach((char) => {
+    if (filteredResult.indexOf(char) > -1 && char !== '-') {
       array.push(true);
-      resultCopy = resultCopy.substr(0, resultCopy.indexOf(char)) + resultCopy.substr(resultCopy.indexOf(char) + 1);
+      filteredResult = filteredResult.substr(0, filteredResult.indexOf(char)) + filteredResult.substr(filteredResult.indexOf(char) + 1);
     } else {
       array.push(false);
     }

@@ -43,7 +43,6 @@ document.addEventListener('click', (e) => {
     state.rightSlots = compare(state.word, result);
     state.rightChars = deepCompare(state.word, result);
     history.push(state);
-    writeGrid(document, selectedLevel.length, history);
     if (hasWon(state.word, result)) {
       score += 1;
       document.getElementById('score').innerHTML = 'Score : ' + score;
@@ -51,10 +50,10 @@ document.addEventListener('click', (e) => {
       censoredResult = censorWord(result, selectedLevel.given);
       writeWord(document, censoredResult);
       history = [];
-      writeGrid(document, selectedLevel.length, history);
     } else if (isLastTurn(history.length)) {
       document.getElementById('outcome').innerHTML = 'You lose';
     }
+    writeGrid(document, selectedLevel.length, history);
   } else if (e.target.id === 'level') {
     selectedLevel = levels[e.target.name];
     result = selectWord(words, selectedLevel.length);

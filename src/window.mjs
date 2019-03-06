@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
-export function writeSlots(dom, slots, history, turn, current) {
+export function writeSlots(dom, slots, history, turn, word, current, characters) {
   let slot = current || 0;
+  let chars = characters || word.split('').map((char) => char !== '-' ? char : false);
   let document = dom;
   let disabled = turn === history.length ? '' : 'disabled';
   let value = '';
@@ -13,19 +14,19 @@ export function writeSlots(dom, slots, history, turn, current) {
   document.getElementById('turn' + turn).innerHTML += '<input type="text" maxlength="1" class="slot' + slot
   + cssClass + '" value="' + value + '" ' + disabled + '>';
   slot += 1;
-  if (slot < slots) document = writeSlots(document, slots, history, turn, slot);
+  if (slot < slots) document = writeSlots(document, slots, history, turn, word, slot);
   else document.getElementById('turn' + turn).innerHTML += '<input type="button" value="Jouer" id="submit" class="submit" ' + disabled + '>';
   return document;
 }
 
-export function writeGrid(dom, slots, history, current) {
+export function writeGrid(dom, slots, history, word, current) {
   let turn = current || 0;
   let document = dom;
   if (!current) document.getElementById('grid').innerHTML = '';
   document.getElementById('grid').innerHTML += '<div id="turn' + turn + '"></div>';
-  document = writeSlots(document, slots, history, turn);
+  document = writeSlots(document, slots, history, turn, word);
   turn += 1;
-  if (turn < 6) document = writeGrid(document, slots, history, turn);
+  if (turn < 6) document = writeGrid(document, slots, history, word, turn);
   return document;
 }
 

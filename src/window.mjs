@@ -37,13 +37,3 @@ export function getSubmittedWord(dom, turn, length, currentWord, currentCount) {
   if (count < length) word = getSubmittedWord(dom, turn, length, word, count);
   return word;
 }
-
-export function disableGrid(dom, turn, length, currentCount) {
-  let document = dom;
-  let count = currentCount || 0;
-  document.querySelectorAll('input.slot' + count)[turn].setAttribute('disabled', '');
-  count += 1;
-  if (count === length) document.querySelectorAll('input.submit')[turn].setAttribute('disabled', '');
-  else document = disableGrid(document, turn, length, count);
-  return document;
-}

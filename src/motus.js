@@ -3,12 +3,13 @@
 import {
   selectWord, censorWord, compare, deepCompare, hasWon, isLastTurn
 } from './game.mjs';
-import { writeGrid, getSubmittedWord, disableGrid } from './window.mjs';
+import { writeGrid, getSubmittedWord } from './window.mjs';
 
 const words = ['azertyu', 'flandre', 'tututut'];
 let length = 7;
 let given = 3;
 let history = [];
+let score = 0;
 
 let result = selectWord(words, length);
 let censoredResult = censorWord(result, given);
@@ -16,6 +17,7 @@ let censoredResult = censorWord(result, given);
 writeGrid(document, length, history);
 
 document.getElementById('word').innerHTML = censoredResult;
+document.getElementById('score').innerHTML = 'Score : ' + score;
 
 document.addEventListener('click', (e) => {
   if (e.target.id === 'submit') {
@@ -26,8 +28,13 @@ document.addEventListener('click', (e) => {
     history.push(state);
     writeGrid(document, length, history);
     if (hasWon(state.word, result)) {
-      document.getElementById('outcome').innerHTML = 'You win';
-      if (history.length > 6) disableGrid(document, history.length, length);
+      score += 1;
+      document.getElementById('score').innerHTML = 'Score : ' + score;
+      result = selectWord(words, length);
+      censoredResult = censorWord(result, given);
+      document.getElementById('word').innerHTML = censoredResult;
+      history = [];
+      writeGrid(document, length, history);
     } else if (isLastTurn(history.length)) {
       document.getElementById('outcome').innerHTML = 'You lose';
     }

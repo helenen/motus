@@ -6,8 +6,30 @@ import {
 import { writeGrid, getSubmittedWord } from './window.mjs';
 
 const words = ['azertyu', 'flandre', 'tututut'];
-let length = 7;
-let given = 3;
+const levels = {
+  veryEasy: {
+    length: 7,
+    given: 3
+  },
+  easy: {
+    length: 7,
+    given: 2
+  },
+  medium: {
+    length: 7,
+    given: 1
+  },
+  motus: {
+    length: 10,
+    given: 2
+  },
+  superMotus: {
+    length: 10,
+    given: 1
+  }
+};
+
+let selectedLevel = {};
 let history = [];
 let score = 0;
 
@@ -38,5 +60,8 @@ document.addEventListener('click', (e) => {
     } else if (isLastTurn(history.length)) {
       document.getElementById('outcome').innerHTML = 'You lose';
     }
+  } else if (e.target.id === 'level') {
+    selectedLevel = levels[e.target.name];
+    document.getElementById('levels').setAttribute('hidden', true);
   }
 });

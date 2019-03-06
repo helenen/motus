@@ -3,7 +3,7 @@
 import {
   selectWord, censorWord, compare, deepCompare, hasWon, isLastTurn
 } from './game.mjs';
-import { writeGrid, getSubmittedWord } from './window.mjs';
+import { writeGrid, getSubmittedWord, writeWord } from './window.mjs';
 
 const words = ['azertyu', 'flandre', 'tututut', 'azertyuiop', 'christophe'];
 const levels = {
@@ -49,7 +49,7 @@ document.addEventListener('click', (e) => {
       document.getElementById('score').innerHTML = 'Score : ' + score;
       result = selectWord(words, selectedLevel.length);
       censoredResult = censorWord(result, selectedLevel.given);
-      document.getElementById('word').innerHTML = censoredResult;
+      writeWord(document, censoredResult);
       history = [];
       writeGrid(document, selectedLevel.length, history);
     } else if (isLastTurn(history.length)) {
@@ -60,9 +60,9 @@ document.addEventListener('click', (e) => {
     result = selectWord(words, selectedLevel.length);
     censoredResult = censorWord(result, selectedLevel.given);
 
+    writeWord(document, censoredResult);
     writeGrid(document, selectedLevel.length, history);
 
-    document.getElementById('word').innerHTML = censoredResult;
     document.getElementById('score').innerHTML = 'Score : ' + score;
     document.getElementById('levels').setAttribute('hidden', true);
     document.getElementById('reloadButton').removeAttribute('hidden');

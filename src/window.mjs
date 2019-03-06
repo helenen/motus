@@ -37,3 +37,10 @@ export function getSubmittedWord(dom, turn, length, currentWord, currentCount) {
   if (count < length) word = getSubmittedWord(dom, turn, length, word, count);
   return word;
 }
+
+export function writeWord(dom, word) {
+  let modifiedWord = word.split('').map((char) => '<input type="text" class="result" value="' + char + '" disabled>').join('');
+  let document = dom;
+  document.getElementById('word').innerHTML = modifiedWord;
+  return document;
+}

@@ -60,7 +60,7 @@ document.addEventListener('click', (e) => {
     censoredResult = censorWord(result, selectedLevel.given);
 
     writeWord(document, censoredResult);
-    writeGrid(document, selectedLevel.length, history);
+    writeGrid(document, selectedLevel.length, history, censoredResult);
 
     document.getElementById('score').innerHTML = 'Score : ' + score;
     document.getElementById('levels').setAttribute('hidden', true);

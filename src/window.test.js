@@ -11,7 +11,7 @@ describe('Grid writer', function () {
     let history = [];
     let expected = JSDOM.fragment('<div id="grid">'
           + '<div id="turn0">'
-            + '<input type="text" maxlength="1" class="slot0" value="">'
+            + '<input type="text" maxlength="1" class="slot0" value="t">'
             + '<input type="text" maxlength="1" class="slot1" value="">'
             + '<input type="text" maxlength="1" class="slot2" value="">'
             + '<input type="text" maxlength="1" class="slot3" value="">'
@@ -71,7 +71,7 @@ describe('Grid writer', function () {
             + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
         + '</div>');
-    expect(window.writeGrid(dom, slots, history)).toEqual(expected);
+    expect(window.writeGrid(dom, slots, history, 't------')).toEqual(expected);
   });
   test('should write down history correctly', () => {
     let dom = JSDOM.fragment('<div id="grid"></div>');
@@ -106,12 +106,12 @@ describe('Grid writer', function () {
             + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn2">'
-            + '<input type="text" maxlength="1" class="slot0" value="">'
+            + '<input type="text" maxlength="1" class="slot0" value="a">'
             + '<input type="text" maxlength="1" class="slot1" value="">'
-            + '<input type="text" maxlength="1" class="slot2" value="">'
+            + '<input type="text" maxlength="1" class="slot2" value="e">'
             + '<input type="text" maxlength="1" class="slot3" value="">'
-            + '<input type="text" maxlength="1" class="slot4" value="">'
-            + '<input type="text" maxlength="1" class="slot5" value="">'
+            + '<input type="text" maxlength="1" class="slot4" value="t">'
+            + '<input type="text" maxlength="1" class="slot5" value="y">'
             + '<input type="button" value="Jouer" id="submit" class="submit">'
           + '</div>'
           + '<div id="turn3">'
@@ -142,7 +142,7 @@ describe('Grid writer', function () {
             + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
         + '</div>');
-    expect(window.writeGrid(dom, slots, history)).toEqual(expected);
+    expect(window.writeGrid(dom, slots, history, 'a-----')).toEqual(expected);
   });
   test('should indicate if a character is in the wrong place', () => {
     let dom = JSDOM.fragment('<div id="grid"></div>');
@@ -163,8 +163,8 @@ describe('Grid writer', function () {
             + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
           + '<div id="turn1">'
-            + '<input type="text" maxlength="1" class="slot0" value="">'
-            + '<input type="text" maxlength="1" class="slot1" value="">'
+            + '<input type="text" maxlength="1" class="slot0" value="a">'
+            + '<input type="text" maxlength="1" class="slot1" value="z">'
             + '<input type="text" maxlength="1" class="slot2" value="">'
             + '<input type="text" maxlength="1" class="slot3" value="">'
             + '<input type="text" maxlength="1" class="slot4" value="">'
@@ -208,7 +208,7 @@ describe('Grid writer', function () {
             + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
           + '</div>'
         + '</div>');
-    expect(window.writeGrid(dom, slots, history)).toEqual(expected);
+    expect(window.writeGrid(dom, slots, history, 'a-----')).toEqual(expected);
   });
 });
 
@@ -219,7 +219,7 @@ describe('Slots writer', function () {
     let history = [];
     let turn = 0;
     let expected = JSDOM.fragment('<div id="turn0">'
-      + '<input type="text" maxlength="1" class="slot0" value="">'
+      + '<input type="text" maxlength="1" class="slot0" value="t">'
       + '<input type="text" maxlength="1" class="slot1" value="">'
       + '<input type="text" maxlength="1" class="slot2" value="">'
       + '<input type="text" maxlength="1" class="slot3" value="">'
@@ -228,7 +228,7 @@ describe('Slots writer', function () {
       + '<input type="text" maxlength="1" class="slot6" value="">'
       + '<input type="button" value="Jouer" id="submit" class="submit">'
     + '</div>');
-    expect(window.writeSlots(dom, slots, history, turn)).toEqual(expected);
+    expect(window.writeSlots(dom, slots, history, turn, ['t', '-', '-', '-', '-', '-', '-'])).toEqual(expected);
   });
   test('should disable all inputs and buttons if the turn is not active', () => {
     let dom = JSDOM.fragment('<div id="turn1"></div>');
@@ -245,7 +245,7 @@ describe('Slots writer', function () {
       + '<input type="text" maxlength="1" class="slot6" value="" disabled>'
       + '<input type="button" value="Jouer" id="submit" class="submit" disabled>'
     + '</div>');
-    expect(window.writeSlots(dom, slots, history, turn)).toEqual(expected);
+    expect(window.writeSlots(dom, slots, history, turn, ['t', '-', '-', '-', '-', '-', '-'])).toEqual(expected);
   });
 });
 
@@ -313,7 +313,7 @@ describe('Word getter', function () {
   });
 });
 
-describe('word writer', function () {
+describe('Word writer', function () {
   test('word write', () => {
     let dom = JSDOM.fragment('<div id="word"></div>');
     let word = 'a-h---g';

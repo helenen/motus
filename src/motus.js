@@ -61,8 +61,11 @@ document.addEventListener('click', (e) => {
       writeWord(document, censoredResult);
       history = [];
     } else if (isLastTurn(history.length)) {
-      document.getElementById('outcome').innerHTML = 'You lose';
-      localStorage.setItem(selectedLevel.difficulty, score);
+      document.getElementById('outcome').innerHTML = 'Game Over.';
+      if (score > (localStorage.getItem(selectedLevel.difficulty) || 0)) {
+        localStorage.setItem(selectedLevel.difficulty, score);
+        document.getElementById('outcome').innerHTML += ' New record !';
+      }
     }
     writeGrid(document, selectedLevel.length, history, censoredResult);
   } else if (e.target.id === 'level') {

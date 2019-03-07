@@ -14,7 +14,8 @@
         "eslint-plugin-jest": "^22.3.0",
         "jest": "^24.1.0"
     },
-    "dependencies": {},
+    "dependencies": {
+    },
     "jest": {
         "transformIgnorePatterns": [
             "/node_modules/(?!test-component).+\\.js$"

@@ -5,7 +5,12 @@ import {
 } from './game.mjs';
 import { writeGrid, getSubmittedWord, writeWord } from './window.mjs';
 
-const words = ['azertyu', 'flandre', 'tututut', 'azertyuiop', 'christophe'];
+let xhr = new XMLHttpRequest();
+let url = 'data.json';
+xhr.open('GET', url, false);
+xhr.send();
+
+const words = JSON.parse(xhr.responseText).data;
 const levels = {
   veryEasy: {
     length: 7,
@@ -51,7 +56,6 @@ document.addEventListener('click', (e) => {
     if (hasWon(state.word, result)) {
       score += 1;
       document.getElementById('score').innerHTML = 'Score : ' + score;
-      document.getElementById('highScore').innerHTML = localStorage.getItem(selectedLevel.difficulty) || 0;
       result = selectWord(words, selectedLevel.length);
       censoredResult = censorWord(result, selectedLevel.given);
       writeWord(document, censoredResult);
@@ -70,6 +74,8 @@ document.addEventListener('click', (e) => {
     writeGrid(document, selectedLevel.length, history, censoredResult);
 
     document.getElementById('score').innerHTML = 'Score : ' + score;
+    document.getElementById('highScore').innerHTML = 'High Score : ' + (localStorage.getItem(selectedLevel.difficulty) != null
+      ? localStorage.getItem(selectedLevel.difficulty) : 0);
     document.getElementById('levels').setAttribute('hidden', true);
     document.getElementById('reloadButton').removeAttribute('hidden');
   }

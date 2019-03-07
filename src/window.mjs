@@ -10,7 +10,7 @@ export function writeSlots(dom, slots, history, turn, chars, current) {
     cssClass = history[turn].rightSlots[slot] ? ' correct' : '';
     if (cssClass === '') cssClass = history[turn].rightChars[slot] ? ' wrongPlace' : '';
   } else if (turn === history.length) {
-    specialAttribute = 'required';
+    specialAttribute = '';
     value = chars[slot] === '-' ? '' : chars[slot];
   }
   document.getElementById('turn' + turn).innerHTML += '<input type="text" maxlength="1" class="slot' + slot
@@ -19,7 +19,7 @@ export function writeSlots(dom, slots, history, turn, chars, current) {
   if (slot < slots) document = writeSlots(document, slots, history, turn, chars, slot);
   else {
     document.getElementById('turn' + turn).innerHTML += '<input type="button" value="Jouer" id="submit" class="submit" '
-    + (specialAttribute === 'disabled' ? specialAttribute : '') + '>';
+    + specialAttribute + '>';
   }
   return document;
 }

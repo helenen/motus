@@ -51,13 +51,14 @@ document.addEventListener('click', (e) => {
     if (hasWon(state.word, result)) {
       score += 1;
       document.getElementById('score').innerHTML = 'Score : ' + score;
+      document.getElementById('highScore').innerHTML = localStorage.getItem(selectedLevel.difficulty) || 0;
       result = selectWord(words, selectedLevel.length);
       censoredResult = censorWord(result, selectedLevel.given);
       writeWord(document, censoredResult);
       history = [];
     } else if (isLastTurn(history.length)) {
       document.getElementById('outcome').innerHTML = 'You lose';
-      document.cookie = selectedLevel.difficulty + '=' + score;
+      localStorage.setItem(selectedLevel.difficulty, score);
     }
     writeGrid(document, selectedLevel.length, history, censoredResult);
   } else if (e.target.id === 'level') {

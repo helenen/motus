@@ -2,7 +2,7 @@
 export function writeSlots(dom, slots, history, turn, chars, current) {
   let slot = current || 0;
   let document = dom;
-  let disabled = 'disabled';
+  let specialAttribute = 'disabled';
   let value = '';
   let cssClass = '';
   if (history[turn]) {
@@ -10,14 +10,17 @@ export function writeSlots(dom, slots, history, turn, chars, current) {
     cssClass = history[turn].rightSlots[slot] ? ' correct' : '';
     if (cssClass === '') cssClass = history[turn].rightChars[slot] ? ' wrongPlace' : '';
   } else if (turn === history.length) {
-    disabled = '';
+    specialAttribute = 'required';
     value = chars[slot] === '-' ? '' : chars[slot];
   }
   document.getElementById('turn' + turn).innerHTML += '<input type="text" maxlength="1" class="slot' + slot
-  + cssClass + '" value="' + value + '" ' + disabled + '>';
+  + cssClass + '" value="' + value + '" ' + specialAttribute + '>';
   slot += 1;
   if (slot < slots) document = writeSlots(document, slots, history, turn, chars, slot);
-  else document.getElementById('turn' + turn).innerHTML += '<input type="button" value="Jouer" id="submit" class="submit" ' + disabled + '>';
+  else {
+    document.getElementById('turn' + turn).innerHTML += '<input type="button" value="Jouer" id="submit" class="submit" '
+    + (specialAttribute === 'disabled' ? specialAttribute : '') + '>';
+  }
   return document;
 }
 
@@ -26,7 +29,7 @@ export function writeGrid(dom, slots, history, word, current, characters) {
   let chars = characters || word.split('');
   let document = dom;
   if (history[turn]) {
-    chars.map((char, index) => {
+    chars = chars.map((char, index) => {
       if (char !== '-') return char;
       if (history[turn].rightSlots[index]) return history[turn].word[index];
       return '-';

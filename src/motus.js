@@ -9,23 +9,28 @@ const words = ['azertyu', 'flandre', 'tututut', 'azertyuiop', 'christophe'];
 const levels = {
   veryEasy: {
     length: 7,
-    given: 3
+    given: 3,
+    difficulty: 'VERY_EASY'
   },
   easy: {
     length: 7,
-    given: 2
+    given: 2,
+    difficulty: 'EASY'
   },
   medium: {
     length: 7,
-    given: 1
+    given: 1,
+    difficulty: 'MEDIUM'
   },
   motus: {
     length: 10,
-    given: 2
+    given: 2,
+    difficulty: 'MOTUS'
   },
   superMotus: {
     length: 10,
-    given: 1
+    given: 1,
+    difficulty: 'SUPER_MOTUS'
   }
 };
 
@@ -52,8 +57,9 @@ document.addEventListener('click', (e) => {
       history = [];
     } else if (isLastTurn(history.length)) {
       document.getElementById('outcome').innerHTML = 'You lose';
+      document.cookie = selectedLevel.difficulty + '=' + score;
     }
-    writeGrid(document, selectedLevel.length, history);
+    writeGrid(document, selectedLevel.length, history, censoredResult);
   } else if (e.target.id === 'level') {
     selectedLevel = levels[e.target.name];
     result = selectWord(words, selectedLevel.length);

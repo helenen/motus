@@ -5,12 +5,27 @@ import {
 } from './game.mjs';
 import { writeGrid, getSubmittedWord, writeWord } from './window.mjs';
 
-let xhr = new XMLHttpRequest();
-let url = 'data.json';
-xhr.open('GET', url, false);
-xhr.send();
+fetch('https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.json')
+  .then(
+    function (response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: '
+          + response.status);
+      }
+      return response.text();
+    }
+  )
+  .catch(function (err) {
+    console.log('Fetch Error :-S', err);
+  });
 
-const words = JSON.parse(xhr.responseText).data;
+
+// let xhr = new XMLHttpRequest();
+// let url = 'data.json';
+// xhr.open('GET', url, false);
+// xhr.send();
+
+const words = JSON.parse(fetch.responseText);
 const levels = {
   veryEasy: {
     length: 7,

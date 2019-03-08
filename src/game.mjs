@@ -1,22 +1,22 @@
 /* eslint-disable linebreak-style */
-export function selectWord(words, length) {
+export function selectWord(math, words, length) {
   let filteredWords = words.filter(word => word.length === length);
-  let word = filteredWords[Math.floor(Math.random() * filteredWords.length)];
+  let word = filteredWords[math.floor(math.random() * filteredWords.length)];
   return word;
 }
 
-export function determineChar(censoredWord) {
+export function determineChar(math, censoredWord) {
   let charIsCensored = censoredWord.split('').map(char => char === '-');
   let char;
   if (charIsCensored[0]) char = 0;
-  else char = Math.floor(Math.random() * charIsCensored.length);
-  if (!charIsCensored[char]) char = determineChar(censoredWord);
+  else char = math.floor(math.random() * charIsCensored.length);
+  if (!charIsCensored[char]) char = determineChar(math, censoredWord);
   return char;
 }
 
 export function uncensor(censoredWord, word, number, current) {
   let currentNb = current || 0;
-  let char = determineChar(censoredWord);
+  let char = determineChar(Math, censoredWord);
   let newCensoredWord = censoredWord.substr(0, char) + word[char] + censoredWord.substr(char + 1, censoredWord.length);
   currentNb += 1;
   if (currentNb !== number) newCensoredWord = uncensor(newCensoredWord, word, number, currentNb);

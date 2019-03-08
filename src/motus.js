@@ -56,7 +56,7 @@ document.addEventListener('click', (e) => {
     if (hasWon(state.word, result)) {
       score += 1;
       document.getElementById('score').innerHTML = 'Score : ' + score;
-      result = selectWord(words, selectedLevel.length);
+      result = selectWord(Math, words, selectedLevel.length);
       censoredResult = censorWord(result, selectedLevel.given);
       writeWord(document, censoredResult);
       history = [];
@@ -70,7 +70,7 @@ document.addEventListener('click', (e) => {
     writeGrid(document, selectedLevel.length, history, censoredResult);
   } else if (e.target.id === 'level') {
     selectedLevel = levels[e.target.name];
-    result = selectWord(words, selectedLevel.length);
+    result = selectWord(Math, words, selectedLevel.length);
     censoredResult = censorWord(result, selectedLevel.given);
 
     writeWord(document, censoredResult);

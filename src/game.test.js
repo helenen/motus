@@ -4,27 +4,19 @@ const game = std('./game.mjs');
 describe('Word selector', function () {
   test('should return a word of a given length', () => {
     let words = ['azerty', 'qsdfghj', 'tyuiopkjhd'];
-    expect(game.selectWord(words, 7)).toEqual('qsdfghj');
+    expect(game.selectWord(Math, words, 7)).toEqual('qsdfghj');
   });
   test('should return a word of any given length', () => {
     let words = ['azerty', 'qsdfghj', 'tyuiopkjhd'];
-    expect(game.selectWord(words, 10)).toEqual('tyuiopkjhd');
+    expect(game.selectWord(Math, words, 10)).toEqual('tyuiopkjhd');
   });
   test('should return a random word with the given length', () => {
     let words = ['azerty', 'qsdfghj', 'tyuiopkjhd', 'azertyuiop'];
-    let selectWordTest = () => game.selectWord(words, 10);
-    let results = [
-      selectWordTest(),
-      selectWordTest(),
-      selectWordTest(),
-      selectWordTest(),
-      selectWordTest(),
-      selectWordTest(),
-      selectWordTest(),
-      selectWordTest(),
-      selectWordTest()
-    ];
-    expect(results.find(word => word === 'azertyuiop')).not.toEqual(undefined);
+    let math = {
+      random: () => 1,
+      floor: (value) => value - 2
+    };
+    expect(game.selectWord(math, words, 10)).toEqual('tyuiopkjhd');
   });
 });
 
@@ -57,17 +49,17 @@ describe('Uncensor', function () {
 });
 
 describe('Character determiner', function () {
-  test('should determine which character to pick', () => {
-    let word = '-';
-    expect(game.determineChar(word)).toEqual(0);
-  });
-  test('should not pick characters that are already uncensored', () => {
-    let word = 'aze-ty';
-    expect(game.determineChar(word)).toEqual(3);
-  });
-  test('should always pick the first character if possible', () => {
+  test('should always pick the first character if it can', () => {
     let word = '------';
-    expect(game.determineChar(word)).toEqual(0);
+    expect(game.determineChar(Math, word)).toEqual(0);
+  });
+  test('should pick a random character otherwise', () => {
+    let word = 'A-----';
+    let math = {
+      random: () => 1,
+      floor: (value) => value - 1
+    };
+    expect(game.determineChar(math, word)).toEqual(5);
   });
 });
 

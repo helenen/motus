@@ -80,6 +80,13 @@ document.addEventListener('click', (e) => {
     writeWord(document, censoredResult);
     writeGrid(document, selectedLevel.length, history, censoredResult);
 
+    setInterval(() => {
+      if (getSubmittedWord(document, history.length, selectedLevel.length).length === selectedLevel.length) {
+        document.getElementById('submit').removeAttribute('disabled');
+      } else {
+        document.getElementById('submit').setAttribute('disabled', true);
+      }
+    }, 100);
     document.getElementById('score').innerHTML = 'Score : ' + score;
     document.getElementById('highScore').innerHTML = 'High Score : ' + (localStorage.getItem(selectedLevel.difficulty) != null
       ? localStorage.getItem(selectedLevel.difficulty) : 0);

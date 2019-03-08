@@ -6,7 +6,7 @@ export function selectWord(math, words, length) {
 }
 
 export function determineChar(math, censoredWord) {
-  let charIsCensored = censoredWord.split('').map(char => char === '-');
+  let charIsCensored = censoredWord.split('').map(char => char === '_');
   let char;
   if (charIsCensored[0]) char = 0;
   else char = math.floor(math.random() * charIsCensored.length);
@@ -24,7 +24,7 @@ export function uncensor(censoredWord, word, number, current) {
 }
 
 export function censorWord(word, uncensoredLetters) {
-  let censoredWord = Array(word.length).fill('-').join('');
+  let censoredWord = Array(word.length).fill('_').join('');
   if (uncensoredLetters > 0) censoredWord = uncensor(censoredWord, word, uncensoredLetters);
   return censoredWord;
 }
@@ -36,10 +36,10 @@ export function compare(word, result) {
 export function deepCompare(word, result) {
   let array = [];
   let comparisonArray = compare(word, result);
-  let filteredWord = word.split('').map((char, index) => comparisonArray[index] ? '-' : char);
-  let filteredResult = result.split('').map((char, index) => comparisonArray[index] ? '-' : char).join('');
+  let filteredWord = word.split('').map((char, index) => comparisonArray[index] ? '_' : char);
+  let filteredResult = result.split('').map((char, index) => comparisonArray[index] ? '_' : char).join('');
   filteredWord.forEach((char) => {
-    if (filteredResult.indexOf(char) > -1 && char !== '-') {
+    if (filteredResult.indexOf(char) > -1 && char !== '_') {
       array.push(true);
       filteredResult = filteredResult.substr(0, filteredResult.indexOf(char)) + filteredResult.substr(filteredResult.indexOf(char) + 1);
     } else {

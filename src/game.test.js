@@ -23,11 +23,11 @@ describe('Word selector', function () {
 describe('Word censor', function () {
   test('should return a censored version of a given word', () => {
     let word = 'azerty';
-    expect(game.censorWord(word, 0)).toEqual('------');
+    expect(game.censorWord(word, 0)).toEqual('______');
   });
   test('should take the number of characters into account', () => {
     let word = 'azertyuiop';
-    expect(game.censorWord(word, 0)).toEqual('----------');
+    expect(game.censorWord(word, 0)).toEqual('__________');
   });
   test('should leave as many uncensored letters as needed', () => {
     let word = 'aze';
@@ -37,24 +37,24 @@ describe('Word censor', function () {
 
 describe('Uncensor', function () {
   test('should uncensor as many letters as needed', () => {
-    let censoredWord = '---';
+    let censoredWord = '___';
     let word = 'aze';
     expect(game.uncensor(censoredWord, word, 3)).toEqual('aze');
   });
   test('should uncensor random letters', () => {
-    let censoredWord = '--------------------';
+    let censoredWord = '____________________';
     let word = 'azertyuiopqsdfghjklm';
-    expect(game.uncensor(censoredWord, word, 3)).not.toEqual('aze-----------------');
+    expect(game.uncensor(censoredWord, word, 3)).not.toEqual('aze_________________');
   });
 });
 
 describe('Character determiner', function () {
   test('should always pick the first character if it can', () => {
-    let word = '------';
+    let word = '______';
     expect(game.determineChar(Math, word)).toEqual(0);
   });
   test('should pick a random character otherwise', () => {
-    let word = 'A-----';
+    let word = 'A_____';
     let math = {
       random: () => 1,
       floor: (value) => value - 1

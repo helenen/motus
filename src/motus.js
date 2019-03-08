@@ -53,7 +53,7 @@ let censoredResult;
 document.addEventListener('click', (e) => {
   if (e.target.id === 'submit') {
     let state = {};
-    state.word = getSubmittedWord(document, history.length, selectedLevel.length);
+    state.word = getSubmittedWord(document, selectedLevel.length);
     state.rightSlots = compare(state.word, result);
     state.rightChars = deepCompare(state.word, result);
     history.push(state);
@@ -81,7 +81,7 @@ document.addEventListener('click', (e) => {
     writeGrid(document, selectedLevel.length, history, censoredResult);
 
     setInterval(() => {
-      if (getSubmittedWord(document, history.length, selectedLevel.length).length === selectedLevel.length) {
+      if (getSubmittedWord(document, selectedLevel.length).length === selectedLevel.length) {
         document.getElementById('submit').removeAttribute('disabled');
       } else {
         document.getElementById('submit').setAttribute('disabled', true);

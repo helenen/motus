@@ -7,13 +7,13 @@ export function writeSlots(dom, slots, history, turn, chars, current) {
   let cssClass = '';
   if (history[turn]) {
     value = history[turn].word[slot] || '';
-    cssClass = history[turn].rightSlots[slot] ? ' correct' : '';
-    if (cssClass === '') cssClass = history[turn].rightChars[slot] ? ' wrongPlace' : '';
+    cssClass = history[turn].rightSlots[slot] ? 'correct' : '';
+    if (cssClass === '') cssClass = history[turn].rightChars[slot] ? 'wrongPlace' : '';
   } else if (turn === history.length) {
     isCurrentTurn = true;
-    value = chars[slot] === '-' ? '' : chars[slot];
+    value = chars[slot] === '_' ? '' : chars[slot];
   }
-  document.getElementById('turn' + turn).innerHTML += '<input type="text" maxlength="1" class="slot' + slot
+  document.getElementById('turn' + turn).innerHTML += '<input type="text" maxlength="1" id="' + (isCurrentTurn ? 'slot' + slot : '') + '" class="'
   + cssClass + '" value="' + value + '" ' + (isCurrentTurn ? '' : 'disabled') + '>';
   slot += 1;
   if (slot < slots) document = writeSlots(document, slots, history, turn, chars, slot);
@@ -29,9 +29,9 @@ export function writeGrid(dom, slots, history, word, current, characters) {
   let document = dom;
   if (history[turn]) {
     chars = chars.map((char, index) => {
-      if (char !== '-') return char;
+      if (char !== '_') return char;
       if (history[turn].rightSlots[index]) return history[turn].word[index];
-      return '-';
+      return '_';
     });
   }
   if (!current) document.getElementById('grid').innerHTML = '';
@@ -42,12 +42,12 @@ export function writeGrid(dom, slots, history, word, current, characters) {
   return document;
 }
 
-export function getSubmittedWord(dom, turn, length, currentWord, currentCount) {
+export function getSubmittedWord(dom, length, currentWord, currentCount) {
   let word = currentWord || '';
   let count = currentCount || 0;
-  word += dom.querySelectorAll('input.slot' + count)[turn].value;
+  word += dom.getElementById('slot' + count).value;
   count += 1;
-  if (count < length) word = getSubmittedWord(dom, turn, length, word, count);
+  if (count < length) word = getSubmittedWord(dom, length, word, count);
   return word;
 }
 

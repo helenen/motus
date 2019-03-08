@@ -5,30 +5,15 @@ import {
 } from './game.mjs';
 import { writeGrid, getSubmittedWord, writeWord } from './window.mjs';
 
-async function getList() {
-  let res = await fetch('https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.json')
-  .then(
-    function (response) {
-      if (response.status !== 200) {
-        console.log('Looks like there was a problem. Status Code: '
-          + response.status);
-      }
-      return response.text().then((text) => text);
-    }
-  )
-  .catch(function (err) {
-    console.log('Fetch Error :-S', err);
+let words = [];
+fetch('https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.json')
+  .then(response => response.json())
+  .then(function (response) {
+    words = response;
+  })
+  .catch(function (error) {
+    console.log(error);
   });
-  return await res;
-}
-
-const words = getList();
-console.log(words);
-
-// let xhr = new XMLHttpRequest();
-// let url = 'data.json';
-// xhr.open('GET', url, false);
-// xhr.send();
 
 const levels = {
   veryEasy: {

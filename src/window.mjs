@@ -57,3 +57,13 @@ export function writeWord(dom, word) {
   document.getElementById('word').innerHTML = modifiedWord;
   return document;
 }
+
+export function determineFocus(dom, length, current) {
+  let slot = current || 0;
+  let result = '';
+  if (dom.getElementById('slot' + slot).value !== '') {
+    slot += 1;
+    result = determineFocus(dom, length, slot);
+  } else result = 'slot' + slot;
+  return result;
+}

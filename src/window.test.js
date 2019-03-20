@@ -307,19 +307,3 @@ describe('Word writer', function () {
     expect(window.writeWord(dom, word)).toEqual(expected);
   });
 });
-describe('Go to next cell automatically', function () {
-  test('Press enter key and go to next cell', () => {
-    let dom = JSDOM.fragment('[<div id="grid">'
-   + '<input type="text" class="result" value="a" disabled>'
-   + '<input type="text" class="result" value="_" disabled>'
-   + '<input type="text" class="result" value="k" disabled>'
-   + '<input type="text" class="result" value="_" disabled>'
-   + '<input type="text" class="result" value="_" disabled>'
-   + '<input type="text" class="result" value="_" disabled>'
-   + '<input type="text" class="result" value="a" disabled>'
-   + '</div>]');
-    let array = Object.values(dom);
-    array[Symbol.iterator]();
-    expect(dom).toEqual(dom);
-  });
-});

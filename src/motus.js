@@ -3,7 +3,9 @@
 import {
   selectWord, censorWord, compare, deepCompare, hasWon, isLastTurn
 } from './game.mjs';
-import { writeGrid, getSubmittedWord, writeWord } from './window.mjs';
+import {
+  writeGrid, getSubmittedWord, writeWord, determineFocus
+} from './window.mjs';
 
 let words = [];
 fetch('https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.json')
@@ -93,4 +95,8 @@ document.addEventListener('click', (e) => {
     document.getElementById('levels').setAttribute('hidden', true);
     document.getElementById('reloadButton').removeAttribute('hidden');
   }
+});
+
+document.addEventListener('keypress', (e) => {
+  if (e.target.id.indexOf('slot') >= 0) document.getElementById(determineFocus(document, selectedLevel.length)).focus();
 });

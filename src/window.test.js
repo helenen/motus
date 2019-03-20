@@ -307,3 +307,19 @@ describe('Word writer', function () {
     expect(window.writeWord(dom, word)).toEqual(expected);
   });
 });
+
+describe('Focus determiner', function () {
+  test('should put the focus on the right slot', () => {
+    let dom = JSDOM.fragment('<div id="turn0">'
+      + '<input type="text" maxlength="1" id="slot0" class="" value="t">'
+      + '<input type="text" maxlength="1" id="slot1" class="" value="">'
+      + '<input type="text" maxlength="1" id="slot2" class="" value="">'
+      + '<input type="text" maxlength="1" id="slot3" class="" value="">'
+      + '<input type="text" maxlength="1" id="slot4" class="" value="">'
+      + '<input type="text" maxlength="1" id="slot5" class="" value="">'
+      + '<input type="text" maxlength="1" id="slot6" class="" value="">'
+      + '<input type="button" value="Jouer" id="submit" class="submit">'
+    + '</div>');
+    expect(window.determineFocus(dom, 7)).toEqual('slot1');
+  });
+});

@@ -309,7 +309,7 @@ describe('Word writer', function () {
 });
 
 describe('Focus determiner', function () {
-  test('should return second slot', () => {
+  test('should return the second slot', () => {
     let dom = JSDOM.fragment('<div id="turn0">'
       + '<input type="text" maxlength="1" id="slot0" class="" value="t">'
       + '<input type="text" maxlength="1" id="slot1" class="" value="">'
@@ -322,7 +322,7 @@ describe('Focus determiner', function () {
     + '</div>');
     expect(window.determineFocus(dom, 7)).toEqual('slot1');
   });
-  test('should return right slot', () => {
+  test('should return the right slot', () => {
     let dom = JSDOM.fragment('<div id="turn0">'
       + '<input type="text" maxlength="1" id="slot0" class="" value="t">'
       + '<input type="text" maxlength="1" id="slot1" class="" value="o">'
@@ -334,5 +334,16 @@ describe('Focus determiner', function () {
       + '<input type="button" value="Jouer" id="submit" class="submit">'
     + '</div>');
     expect(window.determineFocus(dom, 7)).toEqual('slot3');
+  });
+  test('should return the submit button if the word is full', () => {
+    let dom = JSDOM.fragment('<div id="turn0">'
+      + '<input type="text" maxlength="1" id="slot0" class="" value="t">'
+      + '<input type="text" maxlength="1" id="slot1" class="" value="o">'
+      + '<input type="text" maxlength="1" id="slot2" class="" value="y">'
+      + '<input type="text" maxlength="1" id="slot3" class="" value="a">'
+      + '<input type="text" maxlength="1" id="slot4" class="" value="h">'
+      + '<input type="button" value="Jouer" id="submit" class="submit">'
+    + '</div>');
+    expect(window.determineFocus(dom, 5)).toEqual('submit');
   });
 });

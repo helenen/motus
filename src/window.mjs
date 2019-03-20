@@ -61,6 +61,7 @@ export function writeWord(dom, word) {
 export function determineFocus(dom, length, current) {
   let slot = current || 0;
   let result = '';
+  if (slot === length) return 'submit';
   if (dom.getElementById('slot' + slot).value !== '') {
     slot += 1;
     result = determineFocus(dom, length, slot);

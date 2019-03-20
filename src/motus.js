@@ -52,6 +52,8 @@ let score = 0;
 let result;
 let censoredResult;
 
+let interval;
+
 document.addEventListener('click', (e) => {
   if (e.target.id === 'submit') {
     let state = {};
@@ -68,6 +70,7 @@ document.addEventListener('click', (e) => {
       history = [];
     } else if (isLastTurn(history.length)) {
       document.getElementById('outcome').innerHTML = 'Game Over.';
+      clearInterval(interval);
       if (score > (localStorage.getItem(selectedLevel.difficulty) || 0)) {
         localStorage.setItem(selectedLevel.difficulty, score);
         document.getElementById('outcome').innerHTML += ' New record !';
@@ -82,7 +85,7 @@ document.addEventListener('click', (e) => {
     writeWord(document, censoredResult);
     writeGrid(document, selectedLevel.length, history, censoredResult);
 
-    setInterval(() => {
+    interval = setInterval(() => {
       if (getSubmittedWord(document, selectedLevel.length).length === selectedLevel.length) {
         document.getElementById('submit').removeAttribute('disabled');
       } else {
@@ -97,6 +100,8 @@ document.addEventListener('click', (e) => {
   }
 });
 
-document.addEventListener('keypress', (e) => {
-  if (e.target.id.indexOf('slot') >= 0) document.getElementById(determineFocus(document, selectedLevel.length)).focus();
+document.addEventListener('keyup', (e) => {
+  if (e.target.id.indexOf('slot') >= 0) {
+    document.getElementById(determineFocus(document, selectedLevel.length)).focus();
+  }
 });

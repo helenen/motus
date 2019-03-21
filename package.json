@@ -4,7 +4,7 @@
         "test:unit": "jest --config jest-config.js",
         "lint": "eslint . --fix",
         "dev": "browser-sync start --server --files src/*.html src/*.mjs --ss src/ --index src/motus.html",
-        "changelog": "changelog -f[./CHANGELOG.md]"
+        "release": "standard-version"
     },
     "devDependencies": {
         "@std/esm": "^0.26.0",
@@ -13,13 +13,14 @@
         "eslint-config-airbnb-base": "^13.1.0",
         "eslint-plugin-import": "^2.16.0",
         "eslint-plugin-jest": "^22.3.0",
-        "generate-changelog": "^1.7.1",
-        "jest": "^24.1.0"
+        "jest": "^24.1.0",
+        "standard-version": "^5.0.2"
     },
     "dependencies": {},
     "jest": {
         "transformIgnorePatterns": [
             "/node_modules/(?!test-component).+\\.js$"
         ]
-    }
+    },
+    "version": null
 }

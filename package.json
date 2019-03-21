@@ -4,7 +4,7 @@
         "test:unit": "jest --config jest-config.js",
         "lint": "eslint . --fix",
         "dev": "browser-sync start --server --files src/*.html src/*.mjs --ss src/ --index src/motus.html",
-        "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags && changelog -f[./CHANGELOG.md]"
+        "changelog": "changelog -f[./CHANGELOG.md]"
     },
     "devDependencies": {
         "@std/esm": "^0.26.0",

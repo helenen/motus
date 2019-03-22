@@ -1,4 +1,7 @@
 {
+    "name":"motus",
+    "version":"1.0.0",
+    "description":"cool",
     "scripts": {
         "test": "jest",
         "test:unit": "jest --config jest-config.js",
@@ -16,11 +19,12 @@
         "jest": "^24.1.0",
         "standard-version": "^5.0.2"
     },
-    "dependencies": {},
+    "dependencies": {
+        "semver": "^5.6.0"
+    },
     "jest": {
         "transformIgnorePatterns": [
             "/node_modules/(?!test-component).+\\.js$"
         ]
-    },
-    "version": null
+    }
 }

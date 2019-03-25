@@ -13,8 +13,8 @@ fetch('https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.jso
   .then(function (response) {
     words = response;
   })
-  .catch(function (e) {
-    console.log(e);
+  .catch(function (error) {
+    console.log(error);
   });
 
 const levels = {

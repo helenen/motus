@@ -12,9 +12,13 @@ fetch('https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.jso
   .then(response => response.json())
   .then(function (response) {
     words = response;
+    document.getElementById('levels').removeAttribute('hidden');
   })
   .catch(function (e) {
-    console.log(e);
+    document.getElementById('error').innerHTML = e;
+  })
+  .finally(function () {
+    document.getElementById('spinner').setAttribute('hidden', true);
   });
 
 const levels = {

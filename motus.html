@@ -2,6 +2,7 @@
     <head>
         <title>Motus</title>
         <script type="module" src='motus.js'></script>
+        <link href="spinner.css" rel="stylesheet"/>
         <style type="text/css">
             input[type=text] {
                 width:30px;
@@ -24,13 +25,28 @@
     <body>
         <h1>Motus</h1>
         <div class="main">
-            <div id="levels">
+            <div id="levels" hidden="true">
                 <button id="level" name="veryEasy">Très facile</button>
                 <button id="level" name="easy">Facile</button>
                 <button id="level" name="medium">Intermédiaire</button>
                 <button id="level" name="motus">Motus</button>
                 <button id="level" name="superMotus">Super Motus</button>
             </div>
+            <div class="sk-circle" id="spinner">
+                <div class="sk-circle1 sk-child"></div>
+                <div class="sk-circle2 sk-child"></div>
+                <div class="sk-circle3 sk-child"></div>
+                <div class="sk-circle4 sk-child"></div>
+                <div class="sk-circle5 sk-child"></div>
+                <div class="sk-circle6 sk-child"></div>
+                <div class="sk-circle7 sk-child"></div>
+                <div class="sk-circle8 sk-child"></div>
+                <div class="sk-circle9 sk-child"></div>
+                <div class="sk-circle10 sk-child"></div>
+                <div class="sk-circle11 sk-child"></div>
+                <div class="sk-circle12 sk-child"></div>
+                </div>
+            <div id="error"></div>
             <div id="word"></div>
             <div id="grid"></div>
             <div id="score"></div>

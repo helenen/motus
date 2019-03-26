@@ -1,12 +1,12 @@
 {
     "name": "motus",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "description": "cool",
     "scripts": {
         "test": "jest",
         "test:unit": "jest --config jest-config.js",
         "lint": "eslint . --fix",
-        "dev": "browser-sync start --server --files src/*.html src/*.mjs --ss src/ --index src/motus.html",
+        "dev": "browser-sync start --server --files src/*.html src/*.mjs --ss src/ --index motus.html",
         "release": "standard-version"
     },
     "devDependencies": {

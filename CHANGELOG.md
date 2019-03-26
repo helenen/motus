@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.2.0](https://github.com/helenen/motus/compare/v1.1.1...v1.2.0) (2019-03-26)
+
+
+### Features
+
+* test commit ([879864d](https://github.com/helenen/motus/commit/879864d))
+* test commit ([e44cdd4](https://github.com/helenen/motus/commit/e44cdd4))
+
+
+
 ## [1.1.1](https://github.com/helenen/motus/compare/v1.1.0...v1.1.1) (2019-03-25)
 
 

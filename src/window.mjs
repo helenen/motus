@@ -68,3 +68,7 @@ export function determineFocus(dom, length, current) {
   } else result = 'slot' + slot;
   return result;
 }
+
+export function getData(fetch, url) {
+  return fetch(url);
+}

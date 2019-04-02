@@ -4,22 +4,8 @@ import {
   selectWord, censorWord, compare, deepCompare, hasWon, isLastTurn
 } from './game.mjs';
 import {
-  writeGrid, getSubmittedWord, writeWord, determineFocus
+  writeGrid, getSubmittedWord, writeWord, determineFocus, getData
 } from './window.mjs';
-
-let words = [];
-fetch('https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.json')
-  .then(response => response.json())
-  .then(function (response) {
-    words = response;
-    document.getElementById('levels').removeAttribute('hidden');
-  })
-  .catch(function (e) {
-    document.getElementById('error').innerHTML = e;
-  })
-  .finally(function () {
-    document.getElementById('spinner').setAttribute('hidden', true);
-  });
 
 const levels = {
   veryEasy: {
@@ -48,6 +34,20 @@ const levels = {
     difficulty: 'SUPER_MOTUS'
   }
 };
+
+let words = getData(fetch, 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.json')
+  .then(response => response.json())
+  .then(function (response) {
+    words = response;
+    document.getElementById('levels').removeAttribute('hidden');
+  })
+  .catch(function (e) {
+    document.getElementById('error').innerHTML = e;
+  })
+  .finally(function () {
+    document.getElementById('spinner').setAttribute('hidden', true);
+    window.words = words;
+  });
 
 let selectedLevel = {};
 let history = [];

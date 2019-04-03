@@ -35,18 +35,18 @@ const levels = {
   }
 };
 
-let words = getData(fetch, 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.json')
+let words = [];
+getData(fetch, 'https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/fr.json')
   .then(response => response.json())
   .then(function (response) {
-    words = response;
     document.getElementById('levels').removeAttribute('hidden');
+    words = response;
   })
   .catch(function (e) {
     document.getElementById('error').innerHTML = e;
   })
   .finally(function () {
     document.getElementById('spinner').setAttribute('hidden', true);
-    window.words = words;
   });
 
 let selectedLevel = {};

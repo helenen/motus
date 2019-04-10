@@ -2,10 +2,10 @@
 /* eslint-disable eol-last */
 import {
   selectWord, censorWord, compare, deepCompare, hasWon, isLastTurn
-} from './game.mjs';
+} from './game.js';
 import {
   writeGrid, getSubmittedWord, writeWord, determineFocus, getData
-} from './window.mjs';
+} from './window.js';
 
 const levels = {
   veryEasy: {

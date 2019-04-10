@@ -1,8 +1,9 @@
 /* eslint-disable linebreak-style */
-const std = require('@std/esm')(module);
+import {
+  writeGrid, writeSlots, getSubmittedWord, writeWord, determineFocus, getData
+} from './window.js';
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-const win = std('./window.mjs');
 
 describe('Grid writer', function () {
   test('should write the grid on the page', () => {
@@ -66,7 +67,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" id="" class="" value="" disabled>'
           + '</div>'
         + '</div>');
-    expect(win.writeGrid(dom, slots, history, 't______')).toEqual(expected);
+    expect(writeGrid(dom, slots, history, 't______')).toEqual(expected);
   });
   test('should write down history correctly', () => {
     let dom = JSDOM.fragment('<div id="grid"></div>');
@@ -132,7 +133,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" id="" class="" value="" disabled>'
           + '</div>'
         + '</div>');
-    expect(win.writeGrid(dom, slots, history, 'a_____')).toEqual(expected);
+    expect(writeGrid(dom, slots, history, 'a_____')).toEqual(expected);
   });
   test('should indicate if a character is in the wrong place', () => {
     let dom = JSDOM.fragment('<div id="grid"></div>');
@@ -193,7 +194,7 @@ describe('Grid writer', function () {
             + '<input type="text" maxlength="1" id="" class="" value="" disabled>'
           + '</div>'
         + '</div>');
-    expect(win.writeGrid(dom, slots, history, 'a_____')).toEqual(expected);
+    expect(writeGrid(dom, slots, history, 'a_____')).toEqual(expected);
   });
 });
 
@@ -213,7 +214,7 @@ describe('Slots writer', function () {
       + '<input type="text" maxlength="1" id="slot6" class="" value="">'
       + '<input type="button" value="Jouer" id="submit" class="submit">'
     + '</div>');
-    expect(win.writeSlots(dom, slots, history, turn, ['t', '_', '_', '_', '_', '_', '_'])).toEqual(expected);
+    expect(writeSlots(dom, slots, history, turn, ['t', '_', '_', '_', '_', '_', '_'])).toEqual(expected);
   });
   test('should disable all inputs and buttons if the turn is not active', () => {
     let dom = JSDOM.fragment('<div id="turn1"></div>');
@@ -229,7 +230,7 @@ describe('Slots writer', function () {
       + '<input type="text" maxlength="1" id="" class="" value="" disabled>'
       + '<input type="text" maxlength="1" id="" class="" value="" disabled>'
     + '</div>');
-    expect(win.writeSlots(dom, slots, history, turn, ['t', '_', '_', '_', '_', '_', '_'])).toEqual(expected);
+    expect(writeSlots(dom, slots, history, turn, ['t', '_', '_', '_', '_', '_', '_'])).toEqual(expected);
   });
 });
 
@@ -287,7 +288,7 @@ describe('Word getter', function () {
       + '</div>'
     + '</div>');
     let length = 6;
-    expect(win.getSubmittedWord(dom, length)).toEqual('azerty');
+    expect(getSubmittedWord(dom, length)).toEqual('azerty');
   });
 });
 
@@ -304,7 +305,7 @@ describe('Word writer', function () {
     + '<input type="text" class="result" value="_" disabled>'
     + '<input type="text" class="result" value="g" disabled>'
     + '</div>');
-    expect(win.writeWord(dom, word)).toEqual(expected);
+    expect(writeWord(dom, word)).toEqual(expected);
   });
 });
 
@@ -320,7 +321,7 @@ describe('Focus determiner', function () {
       + '<input type="text" maxlength="1" id="slot6" class="" value="">'
       + '<input type="button" value="Jouer" id="submit" class="submit">'
     + '</div>');
-    expect(win.determineFocus(dom, 7)).toEqual('slot1');
+    expect(determineFocus(dom, 7)).toEqual('slot1');
   });
   test('should return the right slot', () => {
     let dom = JSDOM.fragment('<div id="turn0">'
@@ -333,7 +334,7 @@ describe('Focus determiner', function () {
       + '<input type="text" maxlength="1" id="slot6" class="" value="">'
       + '<input type="button" value="Jouer" id="submit" class="submit">'
     + '</div>');
-    expect(win.determineFocus(dom, 7)).toEqual('slot3');
+    expect(determineFocus(dom, 7)).toEqual('slot3');
   });
   test('should return the submit button if the word is full', () => {
     let dom = JSDOM.fragment('<div id="turn0">'
@@ -344,19 +345,19 @@ describe('Focus determiner', function () {
       + '<input type="text" maxlength="1" id="slot4" class="" value="h">'
       + '<input type="button" value="Jouer" id="submit" class="submit">'
     + '</div>');
-    expect(win.determineFocus(dom, 5)).toEqual('submit');
+    expect(determineFocus(dom, 5)).toEqual('submit');
   });
 });
 
 describe('Data getter', function () {
   test('should call the fetch function', () => {
     let fetch = jest.fn();
-    win.getData(fetch, '');
+    getData(fetch, '');
     expect(fetch).toHaveBeenCalledTimes(1);
   });
   test('should give the fetch function the right parameter', () => {
     let fetch = jest.fn();
-    win.getData(fetch, 'test');
+    getData(fetch, 'test');
     expect(fetch).toHaveBeenCalledWith('test');
   });
 });
